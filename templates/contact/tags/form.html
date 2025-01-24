@@ -1,0 +1,6 @@
+<h5>Подписаться на рассылку</h5>
+<form action="{% url 'contact' %}" method="post">
+    {% csrf_token %}
+    {{ contact_form }}
+    <button></button>
+</form>

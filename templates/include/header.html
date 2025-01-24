@@ -1,0 +1,95 @@
+{% load item_tag %}
+  
+{% include 'include/offcanvas_catalog.html' %}
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 my-custom-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_page' %}">Home</a>
+                </li>
+
+                <!-- Offcanvas Catalog -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        Catalog
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">News</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal-cart" href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <!-- Modal -->
+                <div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header bg-secondary text-white">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Корзина</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="img/products/apple.jpg" alt=""></td>
+                                            <td><a href="#">Apple cinema 30"</a></td>
+                                            <td>$230.00</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="img/products/apple.jpg" alt=""></td>
+                                            <td><a href="#">Apple cinema 30"</a></td>
+                                            <td>$230.00</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="img/products/apple.jpg" alt=""></td>
+                                            <td><a href="#">Apple cinema 30"</a></td>
+                                            <td>$230.00</td>
+                                            <td>1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"><i
+                            class="far fa-user"></i></a>
+                    <ul class="dropdown-menu">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Выйти</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Войти</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Регистрация</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

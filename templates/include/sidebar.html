@@ -1,0 +1,37 @@
+<!-- Sidebar -->
+<div class="col-3">
+    <div class="search-bar w3layouts-newsletter">
+        <form action="{% url 'search' %}" method="get" class="d-flex editContent">
+            <input type="search" placeholder="Введите название..." name="q" class="form-control" required="">
+            <button type="submit" class="btn1 btn">
+                <span class="fa fa-search" aria-hidden="true"></span>
+            </button>
+        </form>
+        <h3></h3>
+    </div>
+    <form action="{% url 'filter' %}" method="get">
+        <h4>Бренд</h4>
+        <ul class="list-group list-group-flush">
+            {% for vendor in view.get_vendors %}
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" name="vendor" value="{{ vendor.id }}"
+                    id="id_{{vendor.title}}">
+                <label class="form-check-label" for="id_{{vendor.title}}">{{ vendor.title }}</label>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h4>Категория</h4>
+        <ul class="list-group list-group-flush">
+            {% for ctgr in view.get_categories %}
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" name="category" value="{{ ctgr.id }}"
+                    id="id_{{ ctgr.name }}">
+                <label class="form-check-label" for="id_{{ ctgr.name }}">{{ ctgr.name }}</label>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <button type="submit" class="btn btn-outline-dark">Найти</button>
+    </form>
+</div>

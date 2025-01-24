@@ -1,0 +1,53 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block imports_styles_js %}
+<link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+{% endblock imports_styles_js %}
+
+{% block content %}
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-2 offset-5">
+                <img src="{{ vendor.icon.url }}" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <h2> О производителе </h2>
+            <p> {{ vendor.description }} </p>
+        </div>
+
+        <div class="row">
+            <h2> Продукция </h2>
+
+            {% for item in item_list %}
+            <div class="col-lg-4 col-sm-6">
+                <div class="product-card">
+                    <div class="product-thumb">
+                        <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt=""></a>
+                    </div>
+                    <div class="product-details">
+                        <h4><a href="{{ item.url }}">{{ item.title }}</a></h4>
+                        <p> {{ item.description }} </p>
+                        <div class="product-bottom-details d-flex justify-content-between">
+                            <div class="product-price">
+                                <small> ${{ item.price }} </small> ${{ item.price }}
+                            </div>
+                            <div class="product-links">
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="#"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock content %}

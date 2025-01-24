@@ -1,0 +1,19 @@
+{% load item_tag %}
+
+{% load static %}
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            {% get_categories as categories %}
+            {% for category in categories %}
+                <h3>
+                    <a class="" href="/">{{ category.name }}</a>
+                </h3>
+            {% endfor %}
+        </div>
+    </div>
+</div>

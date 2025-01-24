@@ -1,0 +1,47 @@
+<form class="row g-3">
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+
+    <div class="col-md-3">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4">
+    </div>
+
+    <div class="col-md-3">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword4">
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+</form>
+
+
+{% for review in item.get_review %}
+<div class="media py-5">
+    <img src="" class="mr-3 img-fluid" alt="image">
+    <div class="media-body mt-4">
+        <h5 class="mt-0 editContent">
+            {{ review.name }}
+        </h5>
+        <p class="mt-2 editContent">
+            {{ review.text }}
+        </p>
+        <a href="#formReview" onclick="addReview('{{ review.name }}', '{{ review.id }}')">Ответить</a>
+        {% for rew in review.reviews_set.all %}
+        <div class="media mt-5 editContent">
+            <a class="pr-3" href="#">
+                <img src="" class="img-fluid " alt="image">
+            </a>
+            <div class="media-body">
+                <h5 class="mt-0 editContent">{{ rew.name }}</h5>
+                <p class="mt-2 editContent">{{ rew.text }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
