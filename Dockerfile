@@ -8,6 +8,7 @@ RUN pip install -r requirements.txt
 COPY . .
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
+RUN chmod +x cont_run.sh
 
 EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["make", "up_service"]
