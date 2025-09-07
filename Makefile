@@ -5,7 +5,7 @@ clear:
 	rm -rf dummyenv
 
 venv:
-	python3 -m venv dummyenv
+	python3.9 -m venv dummyenv
 
 install_reqs:
 	${PIP} install -r requirements.txt
